@@ -1,9 +1,7 @@
 from django.urls import path
-
 from . import views
+from django.contrib.auth import views as auth_views
 
-
-app_name = 'home'
 urlpatterns = [
-    path('', views.session, name='sessions'),
+    path('', views.HomeView.as_view()),
 ]

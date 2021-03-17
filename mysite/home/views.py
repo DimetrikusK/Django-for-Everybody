@@ -1,12 +1,21 @@
-from django.shortcuts import render, get_object_or_404, HttpResponse, HttpResponseRedirect, reverse
-from django.http import HttpResponse
+from django.shortcuts import render
+from django.views import View
+from django.conf import settings
 
 
-def session(request):
-    num_visits = int(request.session.get('num_visits', '0')) + 1
-    request.session['num_visits'] = num_visits
-    if num_visits >= 4 : del(request.session['num_visits'])
-    resp = HttpResponse('view count=' + str(num_visits))
-    resp.set_cookie('dj4e_cookie', '201ecef3', max_age=1000)
-    return resp
+# Create your views here.
 
+# This is a little complex because we need to detect when we are
+# running in various configurations
+
+
+class HomeView(View):
+    def get(self, request):
+        print(request.get_host())
+        host = request.get_host()
+        islocal = host.find('localhost') >= 0 or host.find('127.0.0.1') >= 0
+        context = {
+            'installed': settings.INSTALLED_APPS,
+            'islocal': islocal
+        }
+        return render(request, 'home/main.html', context)
