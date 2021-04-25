@@ -12,3 +12,4 @@ urlpatterns = [
     path('owner', views.owner, name='owner'),
 
 ]
+

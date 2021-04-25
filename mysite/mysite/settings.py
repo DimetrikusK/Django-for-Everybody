@@ -35,11 +35,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django.contrib.humanize',
     'home',
     'ads',
     "social_django",
     'crispy_forms',
     'unesco',
+    'polls',
+    'autos',
+    'cats',
 ]
 
 MIDDLEWARE = [

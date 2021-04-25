@@ -1,18 +1,3 @@
-# from django.contrib import admin
-# from django.urls import include, path
-# from django.views.generic import TemplateView
-#
-# urlpatterns = [
-#     path('admin/', admin.site.urls),
-#     path('accounts/', include('django.contrib.auth.urls')),
-#     path('', TemplateView.as_view(template_name='home/main.html')),
-#     path('polls/', include('polls.urls')),
-#     path('hello/', include('home.urls')),
-#     path('autos/', include('autos.urls')),
-#     path('cats/', include('cats.urls'))
-# ]
-
-
 import os
 from django.contrib import admin
 from django.urls import path, include
@@ -20,40 +5,19 @@ from django.conf import settings
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 from django.views.static import serve
+from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', include('ads.urls')),  # Change to ads.urls
-    path('admin/', admin.site.urls),  # Keep
-    path('accounts/', include('django.contrib.auth.urls')),  # Keep
-    url(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', TemplateView.as_view(template_name='home/main.html')),
+    path('polls/', include('polls.urls')),
+    path('hello/', include('home.urls')),
+    path('autos/', include('autos.urls')),
+    path('cats/', include('cats.urls')),
+    path('ads/', include('ads.urls')),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
 
-
-    # Sample applications
-    # path('hello/', include('hello.urls')),
-    # path('users/', include('users.urls')),
-    # path('tracks/', include('tracks.urls')),
-    # path('views/', include('views.urls')),
-    # path('route/', include('route.urls', namespace='nsroute')),
-    # path('tmpl/', include('tmpl.urls')),
-    # path('gview/', include('gview.urls')),
-    # path('session/', include('session.urls')),
-    # path('authz/', include('authz.urls')),
-    # path('getpost/', include('getpost.urls')),
-    # path('form/', include('form.urls')),
-    # path('crispy/', include('crispy.urls')),
-    # path('myarts/', include('myarts.urls')),
-    # path('menu/', include('menu.urls')),
-    # path('forums/', include('forums.urls')),
-    # path('pics/', include('pics.urls')),
-    # path('favs/', include('favs.urls')),
-    # path('favsql/', include('favsql.urls')),
-    # path('rest/', include('rest.urls')),
-    # path('autos/', include('autos.urls')),
-    # path('usermodel/', include('usermodel.urls')),
-    # path('chat/', include('chat.urls')),
-    # path('util/', include('util.urls')),
-    # path('well/', include('well.urls')),
-    # path('tagme/', include('tagme.urls')),
 ]
 
 # Serve the static HTML
